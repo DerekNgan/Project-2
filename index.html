@@ -5,8 +5,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz App</title>
+    <link rel="stylesheet" href="./styles/styles.css">
 </head>
 <body>
+    <main class="wrapper">
+        <section class="start state" id="start"></section>
+        <section class="play state" id="play">
+            <div class="questionsContainer">
+                <h2 id="question">
+                    test
+                </h2>
+            </div>
+            <form class="answersContainer" id="answersContainer">
+                <label for="btn">
+                    test
+                    <input type="radio" id="btn">
+                </label>
+            </form>
+        </section>
+        <section class="reset state" id="reset"></section>
+    </main>
     <script type="module" src="./scripts/script.js"></script>
 </body>
 </html>

@@ -123,8 +123,8 @@ function questionLoad() {
         answerBox.appendChild(createDiv)
     })
 
-    const currentCorrectAnswer = currentQuestionObj.correctAnswer
 
+    const currentCorrectAnswer = currentQuestionObj.correctAnswer
     function answerEval(event) {
         // Input event listener
         if (event.target.tagName === 'INPUT') {
