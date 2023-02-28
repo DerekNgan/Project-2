@@ -9,21 +9,32 @@
 </head>
 <body>
     <main class="wrapper">
-        <section class="start state" id="start"></section>
-        <section class="play state" id="play">
-            <div class="questionsContainer">
-                <h2 id="question">
-                    test
-                </h2>
-            </div>
-            <form class="answersContainer" id="answersContainer">
-                <label for="btn">
-                    test
-                    <input type="radio" id="btn">
-                </label>
+        <section class="start state" id="start">
+            <h1>Best Quiz App!</h1>
+            <form action="">
+                <button>Start</button>
             </form>
         </section>
-        <section class="reset state" id="reset"></section>
+        <section class="play state" id="play">
+            <div class="timerContainer">
+                <!-- timer bar -->
+            </div>
+            <div class="questionsContainer">
+                <h2 id="question"></h2>
+            </div>
+            <form class="answersContainer" id="answersContainer">
+                <button>Submit!</button>
+            </form>
+        </section>
+        <section class="reset state" id="reset">
+            <div class=reset>
+                <h2>Best Quiz App!</h2>
+                <h3>Play Again!</h3>
+            </div>
+            <form action="">
+                <button>Play Again!</button>
+            </form>
+        </section>
     </main>
     <script type="module" src="./scripts/script.js"></script>
 </body>
