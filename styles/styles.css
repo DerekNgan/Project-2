@@ -243,7 +243,17 @@ html {
   visibility: hidden;
 }
 
-main {
+body {
+  height: 100vh;
+}
+
+.wrapper {
+  width: 90%;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.main {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -254,17 +264,10 @@ main {
       -ms-flex-align: center;
           align-items: center;
   font-size: 1rem;
-}
-
-.wrapper {
-  width: 90%;
-  max-width: 1440px;
-  margin: 0 auto;
+  height: 100%;
 }
 
 .state {
-  width: 500px;
-  background-color: peachpuff;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
