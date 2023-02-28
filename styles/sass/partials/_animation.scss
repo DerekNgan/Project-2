@@ -1,1 +1,15 @@
+@use "./variables" as *;
 // ALL CLASSES ASSOCIATED WITH JS
+
+.correct {
+    background-color: $correctColor;
+}
+
+.incorrect {
+    background-color: $incorrectColor;
+}
+
+.removeState {
+    opacity: 0;
+    visibility: hidden;
+}

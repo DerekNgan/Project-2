@@ -230,6 +230,19 @@ html {
   font-size: 125%;
 }
 
+.correct {
+  background-color: rgb(144, 252, 123);
+}
+
+.incorrect {
+  background-color: rgb(243, 108, 108);
+}
+
+.removeState {
+  opacity: 0;
+  visibility: hidden;
+}
+
 main {
   display: -webkit-box;
   display: -ms-flexbox;
