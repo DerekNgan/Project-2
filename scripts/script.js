@@ -90,6 +90,9 @@ function questionLoad() {
 
     // 1) variable for answer box
     const currentAnswers = currentQuestionObj.answers
+    // creating an element for EACH item in our answers array
+
+
     currentAnswers.forEach(function (answer) {
         const answerBox = document.getElementById('answersContainer');
         // 2) create label element 

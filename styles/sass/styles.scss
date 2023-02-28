@@ -1,24 +1,27 @@
-@use './partials/setup';
+@use "./partials/setup";
+@use "./partials/variables" as *;
+@use "./partials/animation" as *;
+@use "./partials/global";
 
 // 1. camelCase
 // 2. "" to be used in 
 // // css
 // // html
 // // js -> use ''
-main{
+main {
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 1rem;
 }
 
-.wrapper{
+.wrapper {
     width: 90%;
     max-width: 1440px;
     margin: 0 auto;
 }
 
-.state{
+.state {
     width: 500px;
     background-color: peachpuff;
     display: flex;
@@ -27,7 +30,7 @@ main{
     align-items: center;
 }
 
-.answersContainer{
+.answersContainer {
     display: flex;
     flex-direction: column;
     justify-content: center;
