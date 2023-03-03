@@ -4,7 +4,7 @@ import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.17.1
 const database = getDatabase(firebaseInfo);
 const dbRef = ref(database);
 
-// DATA 
+// DATA FOR QUESTIONS AND ANSWERS
 const fourAnswerQuestions = [
 
     {
@@ -62,6 +62,11 @@ const questionType = [
     fourAnswerQuestions, trueFalseQuestions
 ]
 
+// DATA FOR USER SCORE
+const score = {
+    userScore: 0
+};
+
 function randomArrVal(arr) {
     const randomIndex = Math.floor(Math.random() * arr.length)
     return arr[randomIndex]
@@ -73,15 +78,15 @@ function questionLoad() {
 
     // Generate a RANDOM QUESTION ARRAY from questiontype array -> returns an entire array
     const currentQuestionType = randomArrVal(questionType);
-    console.log(currentQuestionType);
+    // console.log(currentQuestionType);
     // generate RANDOM QUESTION OBJECT from selected question type -> returns question object
     const currentQuestionObj = randomArrVal(currentQuestionType);
-    console.log(currentQuestionObj)
+    // console.log(currentQuestionObj)
 
     // UPDATE QUESTION TEXT
     // variable for question element (h2)
     const questionDisplay = document.getElementById('question')
-    console.log(questionDisplay);
+    // console.log(questionDisplay);
 
     // using SELECTED QUESTION OBJ and updating question text content
     questionDisplay.textContent = currentQuestionObj.question
@@ -92,38 +97,75 @@ function questionLoad() {
     const currentAnswers = currentQuestionObj.answers
     // creating an element for EACH item in our answers array
 
+    const answerBox = document.getElementById('answersContainer');
+    // clearing all items in answer box === clearing all html elements in the box
+    answerBox.innerHTML = '';
 
     currentAnswers.forEach(function (answer) {
-        const answerBox = document.getElementById('answersContainer');
-        // 2) create label element 
-        const labelEl = document.createElement('label');
-        // 3) .innerHTML input 
-        labelEl.innerHTML = `<input type="radio" id="btn">`
+
+        // 2) create button element 
+        const createButton = document.createElement('button')
+        // 3) adjust button w VALUE base on its index in the answers array + 1
+        // button USER EXPERIENCE
+        // adding string value from currentanswers array to our button AS TEXT
+        createButton.textContent = answer;
+
+        // button properties
+        // id
+        createButton.id = `btn${currentAnswers.indexOf(answer) + 1}`;
+        // value
+        createButton.value = currentAnswers.indexOf(answer) + 1;
+
+        // console.log(createButton)
+
         // 4) append to answer container 
-        answerBox.appendChild(labelEl)
-
-        // TO DO BEFORE MOVING ON: ADJUST HTML FOR LABEL AND INPUT ELEMENT
-        // // GOAL: differentiate each label/input element according its consecutive order AND assign each pair a value to be compared later
-
-        // // // we need to have each set of label/input  pairing be connected (via for and id attribute in HTML)
-        // // // have each input id have its button number (so instead of just id="btn" -> id="btn1" id="btn2" etc)
-        // // // have each label for attribute match the button id (so instead of just for="btn" -> for="btn1" for="btn2" etc)
-        // // // add value attribute to input element 
-
+        answerBox.appendChild(createButton);
     })
+
     // NEXT FUNCTIONALITY: Move our data to Firebase
     // // consider having our data in a JSON file - import it once into firebase!
     // // refactor ALL paths with finding our data (from question load function). make sure we are interacting with the firebase data
 
-    // NEXT FUNCTIONALITY: user click = answer evaluation
-    // // GOAL: when the user clicks on an answer, check IF the input value === correct answer value
 
+
+
+    // NEXT FUNCTIONALITY: user click = answer evaluation
+    // // GOAL: when the user clicks on an answer, check IF the button value === correct answer value
+
+    function answerEval(event) {
+        // establish button is being clicked
+        if (event.target.tagName === 'BUTTON') {
+
+            //converting value to number to compare
+            const currentButton = parseInt(event.target.value);
+
+            // console.log(currentButton);
+
+            const currentCorrectAnswer = currentQuestionObj.correctAnswer
+            if (currentButton === currentCorrectAnswer) {
+                // // // // IF the button value === correct answer value, grant user score +1 point AND add a class of correct to the label
+
+                console.log('yeeeaaaa boiii');
+                score.userScore++;
+                // console.log(score.userScore)
+            } else {
+                // // // // ELSE user score -1 dd a class of correct to the label
+                console.log('nooooo boiii');
+                score.userScore--;
+                // console.log(score.userScore)
+            }
+
+            console.log(score.userScore)
+        }
+
+    }
+
+    answerBox.addEventListener('click', answerEval)
     // // // listen for a click in PARENT OBJECT for buttons (since they are generated after pageload, we cannot have an eventlistener directly linked)
 
-    // // // have a function run a conditional statement
-    // // // // IF the input value === correct answer value, grant user score +1 point AND add a class of correct to the label
-    // // // // ELSE user score -1 dd a class of correct to the label
+
 }
+
 questionLoad();
 
 

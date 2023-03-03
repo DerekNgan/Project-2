@@ -125,6 +125,7 @@ function questionLoad() {
 
 
     const currentCorrectAnswer = currentQuestionObj.correctAnswer
+
     function answerEval(event) {
         // Input event listener
         if (event.target.tagName === 'INPUT') {
