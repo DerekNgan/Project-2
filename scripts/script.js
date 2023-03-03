@@ -170,9 +170,40 @@ function changeState(hiddenState, activeState) {
 startBtn.addEventListener('click', function () {
     // hiding start state and activating playstate
     changeState(startState, playState);
+    // localScore is reset to 0 
+    localScore = 0;
     // timer start
-
+    playTimer ();
+    
 })
+
+function playTimer () {
+// JS timer 
+    let timeLeft = 10;
+    function countdown (){
+        timeLeft--;
+        console.log (timeLeft);
+        if (timeLeft > 0) {
+            setTimeout(countdown, 1000);
+        }
+        //Once timeLeft = 0, we will use changeState function to hide. Hide playState to make resetState appear 
+        
+        if (timeLeft === 0) {
+            changeState (playState, resetState);
+        }
+
+    };
+    setTimeout(countdown, 1000);
+
+
+    const bar = document.querySelector('#bar');
+    let timeLimit =`${String(timeLeft)}s` ;
+    bar.style.animationDuration = timeLimit;
+    console.log ()
+}
+   
+
+
 
 //after timer end run changeState() so now the hidden state will be play state and the active state is the reset state
 resetBtn.addEventListener('click', function () {
@@ -181,3 +212,5 @@ resetBtn.addEventListener('click', function () {
     // timer start
 })
 // once at reset state when reset button is pressed active state will be the start state
+
+
