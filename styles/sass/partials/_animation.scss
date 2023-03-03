@@ -9,7 +9,6 @@
     background-color: $incorrectColor;
 }
 
-.removeState {
-    opacity: 0;
-    visibility: hidden;
+.hidden {
+    display: none;
 }

@@ -230,19 +230,6 @@ html {
   font-size: 125%;
 }
 
-.correct {
-  background-color: rgb(144, 252, 123);
-}
-
-.incorrect {
-  background-color: rgb(243, 108, 108);
-}
-
-.removeState {
-  opacity: 0;
-  visibility: hidden;
-}
-
 body {
   height: 100vh;
 }
@@ -297,4 +284,16 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.correct {
+  background-color: rgb(144, 252, 123);
+}
+
+.incorrect {
+  background-color: rgb(243, 108, 108);
+}
+
+.hidden {
+  display: none;
 }

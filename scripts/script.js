@@ -168,5 +168,30 @@ function questionLoad() {
 
 questionLoad();
 
+const startBtn = document.querySelector('#startBtn');
+const playBtn = document.querySelector('#playBtn');
+const resetBtn = document.querySelector('#resetBtn');
+const startState = document.querySelector('#start');
+const playState = document.querySelector('#play');
+const resetState = document.querySelector('#reset');
 
+function changeState (hiddenState, activeState) {
+    // when start button is pressed, start state is hidden and play state appears
+    hiddenState.classList.add('hidden');
+    activeState.classList.remove('hidden');
+}
 
+startBtn.addEventListener('click', function(){
+// hiding start state and activating playstate
+    changeState(startState, playState);
+    // timer start
+    
+    })
+
+//after timer end run changeState() so now the hidden state will be play state and the active state is the reset state
+resetBtn.addEventListener('click', function(){
+    // hiding start state and activating playstate
+        changeState(resetState, startState);
+        // timer start
+    })
+// once at reset state when reset button is pressed active state will be the start state
