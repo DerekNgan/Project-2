@@ -1,0 +1,12 @@
+@use "./variables" as *;
+
+
+.start .card {
+    justify-content: space-between;
+}
+
+
+.btnContainer {
+    width: 100%;
+    display: flex;
+}

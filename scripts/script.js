@@ -15,13 +15,15 @@ const currentAnswerRef = ref(database, `/currentAnswer`)
 const scoreRef = ref(database, `/score`);
 
 // HTML VARIABLES
-const questionDisplay = document.getElementById('question')
-
+const questionDisplay = document.getElementById('question');
+// PLAY STATE
+let timeLeft = 10;
+const scoreDisplay = document.getElementById('score');
+const timeDisplay = document.getElementById('time');
 const answerBox = document.getElementById('answersContainer');
 
 
 // MISC VARIABLES
-let currentCorrectAnswer = '';
 let localScore = 0;
 
 // FUNCTIONS
@@ -30,10 +32,6 @@ let localScore = 0;
 function randomArrVal(arr) {
     const randomIndex = Math.floor(Math.random() * arr.length)
     return arr[randomIndex]
-}
-
-const changeSetting = (ref, settingChange) => {
-    return update(ref, settingChange)
 }
 
 function getQuestion() {
@@ -74,6 +72,7 @@ function getQuestion() {
             currentAnswersArr.forEach(function (answer) {
                 const newBtn = document.createElement('button')
                 newBtn.id = `btn${currentAnswersArr.indexOf(answer) + 1}`;
+                newBtn.classList.add('answerButton');
                 newBtn.value = currentAnswersArr.indexOf(answer) + 1;
                 // display answer inside button
                 newBtn.textContent = answer;
@@ -94,7 +93,6 @@ function getQuestion() {
 }
 
 
-getQuestion();
 
 function answerEval(event) {
     // ONLY ON BTN CLICK
@@ -108,21 +106,23 @@ function answerEval(event) {
             if (snapshot.exists()) {
                 const currentAnswerPath = snapshot.val().currentAnswer
 
-                // comparing clicked btn value to DB current answer
+                // comparing clicked btn value to DB currentanswer
                 if (clickedAnswer === currentAnswerPath) {
-                    console.log('yippy')
+                    //CORRECT ANSWER
                     localScore++;
-                    console.log(localScore)
-                    //update DB score
-                    // run get question
-                    getQuestion();
+                    // display local score to
+                    scoreDisplay.textContent = localScore;
+                    // delay .5s and then get question
+                    event.target.classList.add('correct');
+                    setTimeout(getQuestion, 500);
+
                 } else {
-                    console.log('fuck')
+                    //CORRECT ANSWER
                     localScore--;
-                    console.log(localScore)
-                    //update DB score
-                    // run get question
-                    getQuestion();
+                    scoreDisplay.textContent = localScore;
+                    // delay .5s and then get question
+                    event.target.classList.add('incorrect');
+                    setTimeout(getQuestion, 500);
                 }
 
             } else {
@@ -134,6 +134,45 @@ function answerEval(event) {
 }
 
 
+function playTimer() {
+    // JS timer 
+    function countdown() {
+        timeLeft--;
+        timeDisplay.textContent = timeLeft;
+        if (timeLeft > 0) {
+            setTimeout(countdown, 1000);
+        }
+
+        // STLYING FOR FINAL FIVE SECONDS
+        if (timeLeft === 5) {
+            bar.style.opacity = '0.25';
+        } else if (timeLeft === 4) {
+            bar.style.opacity = '1';
+        } else if (timeLeft === 3) {
+            bar.style.opacity = '0.25';
+        } else if (timeLeft === 2) {
+            bar.style.opacity = '1';
+        } else if (timeLeft === 1) {
+            bar.style.opacity = '0.25';
+        } else {
+            bar.style.opacity = '1';
+        }
+
+        //Once timeLeft = 0, we will use changeState function to hide. Hide playState to make resetState appear 
+
+        if (timeLeft === 0) {
+            changeState(playState, resetState);
+        }
+    };
+
+    setTimeout(countdown, 1000);
+
+
+    const bar = document.querySelector('#bar');
+    let timeLimit = `${String(timeLeft)}s`;
+    bar.style.animationDuration = timeLimit;
+    console.log()
+}
 
 answerBox.addEventListener('click', answerEval)
 
@@ -172,50 +211,17 @@ startBtn.addEventListener('click', function () {
     changeState(startState, playState);
     // localScore is reset to 0 
     localScore = 0;
-    // timer start
-    playTimer ();
-    
+    // get question on button press - CHANGE IF LAG IS REAL
+    getQuestion();
+    //time is shown
+    timeDisplay.textContent = timeLeft;
+    // timer starts
+    playTimer();
+
 })
 
-function playTimer () {
-// JS timer 
-    let timeLeft = 3;
-    function countdown (){
-        timeLeft--;
-        console.log (timeLeft);
-        if (timeLeft > 0) {
-            setTimeout(countdown, 1000);
-        }
-
-        if (timeLeft === 5) {
-            bar.style.opacity = '0.25';
-        } else if (timeLeft === 4) {
-            bar.style.opacity = '1';
-        } else if (timeLeft === 3) {
-            bar.style.opacity = '0.25';
-        } else if (timeLeft === 2) {
-            bar.style.opacity = '1';
-        } else if (timeLeft === 1) {
-            bar.style.opacity = '0.25';
-        } else {
-            bar.style.opacity = '1';
-        }
-    
-        //Once timeLeft = 0, we will use changeState function to hide. Hide playState to make resetState appear 
-        
-        if (timeLeft === 0) {
-            changeState (playState, resetState);
-        }
-    };
-    setTimeout(countdown, 1000);
 
 
-    const bar = document.querySelector('#bar');
-    let timeLimit =`${String(timeLeft)}s` ;
-    bar.style.animationDuration = timeLimit;
-    console.log ()
-}
-   
 
 
 
@@ -223,8 +229,7 @@ function playTimer () {
 resetBtn.addEventListener('click', function () {
     // hiding start state and activating playstate
     changeState(resetState, startState);
-    // timer start
+
 })
-// once at reset state when reset button is pressed active state will be the start state
 
 

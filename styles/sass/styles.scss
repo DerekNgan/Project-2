@@ -1,6 +1,11 @@
+//global partials
 @use "./partials/setup";
 @use "./partials/variables" as *;
 @use "./partials/global";
+//state partials
+@use "./partials/startState";
+@use "./partials/playState";
+//animation partials
 @use "./partials/animation" as *;
 
 // 1. camelCase
@@ -8,9 +13,3 @@
 // // css
 // // html
 // // js -> use ''
-
-
-
-
-
-

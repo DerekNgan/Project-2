@@ -9,65 +9,76 @@
 </head>
 <body>
     <main class="main wrapper">
+        <!-- START STATE -->
         <section class="start state" id="start">
-            <h1>Best Quiz App!</h1>
-            <div class="btnContainer">
-                <button id="startBtn" class="startBtn">Start</button>
-            </div>
-        </section>
-
-
-        <section class="play state hidden" id="play">
-            <div class="timerContainer">
-                <div class="bar" id="bar">
+            <!-- STATE WRAPPER -->
+            <div class="wrapper card">
+                <!-- title -->
+                <div class="titleContainer">
+                    <h1>Best Quiz App!</h1>
                 </div>
-                <!-- timer bar -->
+
+                <div class="btnContainer">
+                    <button id="startBtn" class="startBtn">Start</button>
+                </div>
             </div>
-            <div class="questionsContainer"> 
-                <h2 id="question"></h2>
-            </div>
-            <ul class="answersContainer" id="answersContainer">
-                <button id="playBtn">Submit</button>
-            </ul>
         </section>
 
+        <!-- PLAY STATE -->
+        <section class="play state hidden" id="play">
+            <!-- STATE WRAPPER -->
+            <div class="wrapper card">
 
-        <section class="reset state hidden" id="reset">
-            <div class=reset>
-                <h2>Thank you for playing!</h2>
+                <!-- TIMER -->
+                <div class="timerContainer">
+
+                    <!-- text display -->
+                    <div class="timeText" >
+                        <span class="statDisplay" id="time"></span>
+                    </div>
+
+                    <!-- timer bar display -->
+                    <div class="timerBar">
+                        <!-- timer bar -->
+                        <div class="bar" id="bar">
+                        </div>
+                    </div>
+
+                    <!-- score display -->
+                    <div class="scoreText">
+                        <span class="statDisplay" id="score">0</span>
+                    </div>
+
+                </div>
+
+                <!-- SCORE -->
+
+    
+                <!-- QUESTION CONTAINER -->
+                <div class="questionsContainer"> 
+                    <h2 id="question"></h2>
+                </div>
+
+                <!-- ANSWERS CONTAINER -->
+                <ul class="answersContainer" id="answersContainer">
+                    <button id="playBtn">Submit</button>
+                </ul>
             </div>
-            <div class="btnContainer">
-                <button id="resetBtn" class="resetBtn">Play Again</button>
+        </section>
+
+        <!-- RESET STATE -->
+        <section class="reset state hidden" id="reset">
+            <!-- STATE WRAPPER -->
+            <div class="wrapper card">
+                <div class=reset>
+                    <h2>Thank you for playing!</h2>
+                </div>
+                <div class="btnContainer">
+                    <button id="resetBtn" class="resetBtn">Play Again</button>
+                </div>
             </div>
         </section>
     </main>
     <script type="module" src="./scripts/script.js"></script>
 </body>
 </html>
-<!-- Prepared: 
-pseudo code for gameflow
-1) Front page, start game button, title?, very simple front page, background could be color or gif or add animations if we want
-List all possible elements
-2) Firebase stuff - update / onvalue?
-3) variables, DOM, objects, arrays, functions, eventlistener(click), if / else, setInterval
-List any functions we can think
-4) function to load questions / answers, to checck answer? An alert at the end of the quiz to let user know it's done. If timer is added then another function to alert user they are out of time. 
-STRETCH GOAL QUESTIONS - function to alert user they have failed if they move within 10 seconds, randomize button location?
-Start state, game state, reset state is assumption
-start state - start button on title page
-game state - timer or userscore(highscore?)
-reset - reset button or X button during the game so user can stop or reset whenever
-timer - number timer or bar timer?
-
-Question array object! (look at MVP for context)
-
-Design (wireframe)
-consider different contexts
-Start state - different background images?
-Game state - timer starts + reset button appears?
-Reset state - takes you back to title page?
-Format:
-Elements 
-UI - buttons / countdown timer
-Graphics - display questions / answer or gif background? Add animation for randomized questions?
- -->
