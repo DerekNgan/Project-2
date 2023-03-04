@@ -16,6 +16,10 @@ const scoreRef = ref(database, `/score`);
 
 // HTML VARIABLES
 const questionDisplay = document.getElementById('question');
+const yourHighScore = document.getElementById('yourHighScore');
+const yourLocalScore = document.getElementById('yourLocalScore');
+
+
 // PLAY STATE
 let timeLeft = 10;
 const scoreDisplay = document.getElementById('score');
@@ -103,6 +107,7 @@ function answerEval(event) {
         // GET DB CURRENT ANSWER
         get(dbRef).then(function (snapshot) {
 
+
             if (snapshot.exists()) {
                 const currentAnswerPath = snapshot.val().currentAnswer
 
@@ -115,6 +120,7 @@ function answerEval(event) {
                     // delay .5s and then get question
                     event.target.classList.add('correct');
                     setTimeout(getQuestion, 500);
+                    //Delete CURRENT QUESTION DATA from Firebase to avoid duplicate 
 
                 } else {
                     //CORRECT ANSWER
@@ -123,6 +129,8 @@ function answerEval(event) {
                     // delay .5s and then get question
                     event.target.classList.add('incorrect');
                     setTimeout(getQuestion, 500);
+                    //Delete CURRENT QUESTION DATA from Firebase to avoid duplicate 
+
                 }
 
             } else {
@@ -161,6 +169,40 @@ function playTimer() {
         //Once timeLeft = 0, we will use changeState function to hide. Hide playState to make resetState appear 
 
         if (timeLeft === 0) {
+            //Save the userName locally 
+            //Upload to Firebase when the timer runs out 
+            //Issue having variable as object key 
+            //Creating key 
+            //Creating empty object 
+            //Assigning value to key in object 
+            //BECAUSE there is no key or value in the object, it will create it for us 
+            const key =  `${userName}`
+            const userScore = {}
+            userScore [key] = localScore;
+            // console.log(userScore);
+               
+        
+            update (scoreRef, userScore)
+            //Update () userName, localScore @scoreRef 
+            //get () high score from dB
+            get (scoreRef).then (function(data) {
+                if (data.exists()){
+                    console.log (data.val()[userName]) 
+                    console.log (data.val().key) 
+
+
+                } else {
+                    console.log ('sorry no data found')
+                }
+            
+            })
+            //Display highscore at reset state
+
+            //Display LOCAL userName reset state
+
+            //Display LOCAL score at reset state 
+            yourLocalScore.textContent = `${userName}: ${localScore} points` 
+
             changeState(playState, resetState);
         }
     };
@@ -206,19 +248,58 @@ function changeState(hiddenState, activeState) {
     activeState.classList.remove('hidden');
 }
 
-startBtn.addEventListener('click', function () {
-    // hiding start state and activating playstate
-    changeState(startState, playState);
-    // localScore is reset to 0 
-    localScore = 0;
-    // get question on button press - CHANGE IF LAG IS REAL
-    getQuestion();
-    //time is shown
-    timeDisplay.textContent = timeLeft;
-    // timer starts
-    playTimer();
+// startBtn.addEventListener('click', function () {
+//     // hiding start state and activating playstate
+//     changeState(startState, playState);
+//     // localScore is reset to 0 
+//     localScore = 0;
+//     // get question on button press - CHANGE IF LAG IS REAL
+//     getQuestion();
+//     //time is shown
+//     timeDisplay.textContent = timeLeft;
+//     // timer starts
+//     playTimer();
 
-})
+// })
+
+
+
+
+let userName = ""
+
+// add a form + label + input to start state HTML
+// change button eventlistener to formeventlistener
+
+const nameForm = document.getElementById ('nameForm')
+const nameInput = document.getElementById ('nameInput')
+nameForm.addEventListener('submit', function(event) {
+    event.preventDefault ();
+    // console.log (nameInput.value)
+    userName = nameInput.value
+    // console.log(userName)
+
+  // hiding start state and activating playstate
+  changeState(startState, playState);
+  // localScore is reset to 0 
+  localScore = 0;
+  // get question on button press - CHANGE IF LAG IS REAL
+  getQuestion();
+  //time is shown
+  timeDisplay.textContent = timeLeft;
+  // timer starts
+  playTimer();
+
+});
+
+
+ 
+
+
+
+
+
+
+
 
 
 
@@ -233,3 +314,4 @@ resetBtn.addEventListener('click', function () {
 })
 
 
+//Reset the firebase questions 

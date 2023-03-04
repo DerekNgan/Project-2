@@ -18,9 +18,11 @@
                     <h1>Best Quiz App!</h1>
                 </div>
 
-                <div class="btnContainer">
+                <form class="btnContainer" name="nameForm" id="nameForm">
+                    <label class="sr-only" for="nameInput">Enter your name</label>
+                    <input placeholder="please enter your name" type="text" name="nameInput" id="nameInput" required>
                     <button id="startBtn" class="startBtn">Start</button>
-                </div>
+                </form>
             </div>
         </section>
 
@@ -72,6 +74,14 @@
             <div class="wrapper card">
                 <div class=reset>
                     <h2>Thank you for playing!</h2>
+                </div>
+                <div class="scoreStats">
+                    <h3>High Score</h3>
+                    <!-- Display firebase highscore -->
+                    <p id="yourHighScore"></p>
+                    <h3>Your Score </h3>
+                    <!-- Display local your score -->
+                    <p id="yourLocalScore"></p>
                 </div>
                 <div class="btnContainer">
                     <button id="resetBtn" class="resetBtn">Play Again</button>
