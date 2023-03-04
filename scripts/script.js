@@ -179,7 +179,7 @@ startBtn.addEventListener('click', function () {
 
 function playTimer () {
 // JS timer 
-    let timeLeft = 10;
+    let timeLeft = 3;
     function countdown (){
         timeLeft--;
         console.log (timeLeft);
