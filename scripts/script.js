@@ -186,12 +186,26 @@ function playTimer () {
         if (timeLeft > 0) {
             setTimeout(countdown, 1000);
         }
+
+        if (timeLeft === 5) {
+            bar.style.opacity = '0.25';
+        } else if (timeLeft === 4) {
+            bar.style.opacity = '1';
+        } else if (timeLeft === 3) {
+            bar.style.opacity = '0.25';
+        } else if (timeLeft === 2) {
+            bar.style.opacity = '1';
+        } else if (timeLeft === 1) {
+            bar.style.opacity = '0.25';
+        } else {
+            bar.style.opacity = '1';
+        }
+    
         //Once timeLeft = 0, we will use changeState function to hide. Hide playState to make resetState appear 
         
         if (timeLeft === 0) {
             changeState (playState, resetState);
         }
-
     };
     setTimeout(countdown, 1000);
 

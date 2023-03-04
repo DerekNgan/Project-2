@@ -12,3 +12,7 @@
 .hidden {
     display: none;
 }
+
+.bar{
+    transition: width 1s linear, opacity 1s ease-in-out;
+}
