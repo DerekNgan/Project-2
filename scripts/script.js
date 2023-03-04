@@ -66,7 +66,7 @@ function getQuestion() {
 
             // all possible answers FOR random questions
             const currentAnswersArr = randomQuestion.answers
-            console.log(currentAnswersArr)
+            // console.log(currentAnswersArr)
 
             // target each answer -> forEach
             // make a button for each answer
@@ -123,7 +123,7 @@ function answerEval(event) {
                     //Delete CURRENT QUESTION DATA from Firebase to avoid duplicate 
 
                 } else {
-                    //CORRECT ANSWER
+                    //INCORRECT ANSWER
                     localScore--;
                     scoreDisplay.textContent = localScore;
                     // delay .5s and then get question
@@ -151,7 +151,7 @@ function playTimer() {
             setTimeout(countdown, 1000);
         }
 
-        // STLYING FOR FINAL FIVE SECONDS
+        // STLYING FOR FINAL FIVE SECONDS -> Courtsey of Derek Ngan
         if (timeLeft === 5) {
             bar.style.opacity = '0.25';
         } else if (timeLeft === 4) {
@@ -187,6 +187,7 @@ function playTimer() {
             //get () high score from dB
             get (scoreRef).then (function(data) {
                 if (data.exists()){
+                    //Technically these console logs aren't correct 
                     console.log (data.val()[userName]) 
                     console.log (data.val().key) 
 
@@ -207,6 +208,8 @@ function playTimer() {
         }
     };
 
+
+
     setTimeout(countdown, 1000);
 
 
@@ -215,6 +218,13 @@ function playTimer() {
     bar.style.animationDuration = timeLimit;
     console.log()
 }
+
+function changeState(hiddenState, activeState) {
+    // when start button is pressed, start state is hidden and play state appears
+    hiddenState.classList.add('hidden');
+    activeState.classList.remove('hidden');
+}
+
 
 answerBox.addEventListener('click', answerEval)
 
@@ -242,11 +252,6 @@ const startState = document.querySelector('#start');
 const playState = document.querySelector('#play');
 const resetState = document.querySelector('#reset');
 
-function changeState(hiddenState, activeState) {
-    // when start button is pressed, start state is hidden and play state appears
-    hiddenState.classList.add('hidden');
-    activeState.classList.remove('hidden');
-}
 
 // startBtn.addEventListener('click', function () {
 //     // hiding start state and activating playstate
@@ -292,26 +297,11 @@ nameForm.addEventListener('submit', function(event) {
 });
 
 
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
 //after timer end run changeState() so now the hidden state will be play state and the active state is the reset state
 resetBtn.addEventListener('click', function () {
     // hiding start state and activating playstate
     changeState(resetState, startState);
-
+//Reset the firebase questions 
 })
 
 
-//Reset the firebase questions 
