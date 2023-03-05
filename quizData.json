@@ -35,7 +35,7 @@
             "answers": [
                 "England",
                 "Ghana",
-                " United States",
+                "United States",
                 "Canada"
             ],
             "correctAnswer": 4
@@ -70,7 +70,7 @@
             "question": "Four: Australia is a continent",
             "answers": [
                 "True",
-                "False'"
+                "False"
             ],
             "correctAnswer": 1
         }
@@ -79,7 +79,10 @@
         "fourAnswerQuestions",
         "trueFalseQuestions"
     ],
-    "score": {
-        "userScore": 0
-    }
+    "score": [
+        {
+            "name": "test",
+            "score": 1
+        }
+    ]
 }

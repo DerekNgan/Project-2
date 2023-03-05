@@ -1,5 +1,7 @@
 import firebaseInfo from "./firebaseConfig.js"
-import { get, getDatabase, ref, update } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js";
+import { get, getDatabase, ref, update, push, query, orderByChild, limitToFirst } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js";
+
+import { fourAnswerQuestions, trueFalseQuestions } from "./dataObj.js";
 
 const database = getDatabase(firebaseInfo);
 const dbRef = ref(database);
@@ -20,18 +22,30 @@ const yourHighScore = document.getElementById('yourHighScore');
 const yourLocalScore = document.getElementById('yourLocalScore');
 
 
+// START STATE
+const startState = document.querySelector('#start');
+const startBtn = document.querySelector('#startBtn');
+const nameForm = document.getElementById('nameForm');
+const nameInput = document.getElementById('nameInput');
+
 // PLAY STATE
-let timeLeft = 10;
+const playState = document.querySelector('#play');
 const scoreDisplay = document.getElementById('score');
 const timeDisplay = document.getElementById('time');
 const answerBox = document.getElementById('answersContainer');
+const playBtn = document.querySelector('#playBtn');
 
+// RESET STATE
+const resetBtn = document.querySelector('#resetBtn');
+const resetState = document.querySelector('#reset');
 
 // MISC VARIABLES
+let timeLeft = 3;
 let localScore = 0;
+let userName = '';
+
 
 // FUNCTIONS
-
 
 function randomArrVal(arr) {
     const randomIndex = Math.floor(Math.random() * arr.length)
@@ -95,7 +109,6 @@ function getQuestion() {
         }
     })
 }
-
 
 
 function answerEval(event) {
@@ -176,33 +189,57 @@ function playTimer() {
             //Creating empty object 
             //Assigning value to key in object 
             //BECAUSE there is no key or value in the object, it will create it for us 
-            const key =  `${userName}`
-            const userScore = {}
-            userScore [key] = localScore;
-            // console.log(userScore);
-               
-        
-            update (scoreRef, userScore)
-            //Update () userName, localScore @scoreRef 
-            //get () high score from dB
-            get (scoreRef).then (function(data) {
-                if (data.exists()){
-                    //Technically these console logs aren't correct 
-                    console.log (data.val()[userName]) 
-                    console.log (data.val().key) 
 
+            // WANTING OBJ W KEY as USER NAME
+            // const key = `${userName}`
+            // const userScore = {}
+            // userScore[key] = localScore;
+
+            // WANTING OBJ W USER NAME AS A VALUE
+            const userScore = { name: userName, points: localScore }
+            // console.log(userScore);
+
+            //updating local score to firebase
+
+            // UPDATE METHOD
+            // update(scoreRef, userScore)
+            // PUSH METHOD
+            push(scoreRef, userScore)
+
+            //Update () userName, localScore @scoreRef 
+            const orderedFirebaseScores = query(scoreRef, orderByChild('points'), limitToFirst(3));
+
+
+            //GET highscore from DB
+            // get(scoreRef).then(function (data) {
+            //     if (data.exists()) {
+            //         // store current data as a variable (score array w ALL obj -name and score)
+            //         const scoreArr = data.val();
+
+            //     } else {
+            //         console.log('sorry no data found')
+            //     }
+
+            // })
+
+            get(orderedFirebaseScores).then(function (data) {
+                if (data.exists()) {
+                    // store current data as a variable (score array w ALL obj -name and score)
+                    console.log(data.val())
 
                 } else {
-                    console.log ('sorry no data found')
+                    console.log('sorry no data found')
                 }
-            
+
             })
+
+
             //Display highscore at reset state
 
             //Display LOCAL userName reset state
 
             //Display LOCAL score at reset state 
-            yourLocalScore.textContent = `${userName}: ${localScore} points` 
+            yourLocalScore.textContent = `${userName}: ${localScore} points`
 
             changeState(playState, resetState);
         }
@@ -228,15 +265,8 @@ function changeState(hiddenState, activeState) {
 
 answerBox.addEventListener('click', answerEval)
 
-// get() -> get current score data
-//  add 1 to current score data AS OBJ
-// update DB w new obj
 
 
-// ----------------------------------------------
-
-
-// onValue func for user score! to immediately get most up to date score
 
 
 
@@ -245,12 +275,7 @@ answerBox.addEventListener('click', answerEval)
 
 // questionLoad();
 
-const startBtn = document.querySelector('#startBtn');
-const playBtn = document.querySelector('#playBtn');
-const resetBtn = document.querySelector('#resetBtn');
-const startState = document.querySelector('#start');
-const playState = document.querySelector('#play');
-const resetState = document.querySelector('#reset');
+
 
 
 // startBtn.addEventListener('click', function () {
@@ -270,29 +295,27 @@ const resetState = document.querySelector('#reset');
 
 
 
-let userName = ""
 
 // add a form + label + input to start state HTML
 // change button eventlistener to formeventlistener
 
-const nameForm = document.getElementById ('nameForm')
-const nameInput = document.getElementById ('nameInput')
-nameForm.addEventListener('submit', function(event) {
-    event.preventDefault ();
+
+nameForm.addEventListener('submit', function (event) {
+    event.preventDefault();
     // console.log (nameInput.value)
     userName = nameInput.value
     // console.log(userName)
 
-  // hiding start state and activating playstate
-  changeState(startState, playState);
-  // localScore is reset to 0 
-  localScore = 0;
-  // get question on button press - CHANGE IF LAG IS REAL
-  getQuestion();
-  //time is shown
-  timeDisplay.textContent = timeLeft;
-  // timer starts
-  playTimer();
+    // hiding start state and activating playstate
+    changeState(startState, playState);
+    // localScore is reset to 0 
+    localScore = 0;
+    // get question on button press - CHANGE IF LAG IS REAL
+    getQuestion();
+    //time is shown
+    timeDisplay.textContent = timeLeft;
+    // timer starts
+    playTimer();
 
 });
 
@@ -301,7 +324,20 @@ nameForm.addEventListener('submit', function(event) {
 resetBtn.addEventListener('click', function () {
     // hiding start state and activating playstate
     changeState(resetState, startState);
-//Reset the firebase questions 
+    //Reset the firebase questions 
 })
 
+
+// const testObj = [
+//     { name: 'Bob', score: 1 },
+//     { name: 'Alex', score: 9 },
+//     { name: 'Stan', score: 4 },
+//     { name: 'Anna', score: 79 },
+//     { name: 'Stan', score: 4 }
+// ]
+
+
+// testObj.sort((a, b) => a.score < b.score);
+
+// console.log(testObj[0])
 
