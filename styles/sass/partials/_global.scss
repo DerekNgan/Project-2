@@ -20,7 +20,7 @@ h6 {
 
 // FONT STYLES
 h1 {
-  font-size: 4rem; //80px computed
+  font-size: 3rem; //80px computed
   color: $buttonFontColor;
 }
 
@@ -96,6 +96,11 @@ button:focus {
   box-shadow: 0px 0px 41px 0px rgb(145, 113, 192, 0.8);
   transform: translateY(-10px);
   color: $buttonFontColor;
+}
+
+.formContainer {
+  display: flex;
+  flex-flow: column wrap;
 }
 
 

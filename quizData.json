@@ -1,7 +1,7 @@
 {
     "fourAnswerQuestions": [
         {
-            "question": "One: is this test working?",
+            "question": ": is this test working?",
             "answers": [
                 "yes",
                 "no",
@@ -11,7 +11,7 @@
             "correctAnswer": 1
         },
         {
-            "question": "TWO: what is the fastest animal",
+            "question": "What is the fastest animal",
             "answers": [
                 "turtle",
                 "cheetah",
@@ -21,7 +21,7 @@
             "correctAnswer": 2
         },
         {
-            "question": "THREE what is 7 - 8?",
+            "question": "What is 7 - 8?",
             "answers": [
                 "1",
                 "4",
@@ -31,7 +31,7 @@
             "correctAnswer": 4
         },
         {
-            "question": "'Four: Trailer Park Boys is filmed in...'",
+            "question": "Trailer Park Boys is filmed in...'",
             "answers": [
                 "England",
                 "Ghana",
@@ -43,7 +43,7 @@
     ],
     "trueFalseQuestions": [
         {
-            "question": "is this test working?",
+            "question": "Ketchup is a condiment",
             "answers": [
                 "yes",
                 "no"
@@ -51,7 +51,7 @@
             "correctAnswer": 1
         },
         {
-            "question": "TWO: what is the opposite of north",
+            "question": "What is the opposite of north",
             "answers": [
                 "north",
                 "south"

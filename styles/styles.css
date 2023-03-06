@@ -245,7 +245,7 @@ h6 {
 }
 
 h1 {
-  font-size: 4rem;
+  font-size: 3rem;
   color: rgb(213, 213, 235);
 }
 
@@ -329,6 +329,16 @@ button:focus {
   color: rgb(213, 213, 235);
 }
 
+.formContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column wrap;
+          flex-flow: column wrap;
+}
+
 .reset {
   width: 100%;
 }
@@ -342,11 +352,21 @@ button:focus {
           justify-content: space-between;
 }
 
-.btnContainer {
+h1 {
+  text-align: center;
+}
+
+.formContainer {
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+}
+
+.startBtn {
+  font-size: 1.2rem;
+  text-align: center;
+  padding: 10px;
 }
 
 .timerContainer {

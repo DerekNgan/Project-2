@@ -5,8 +5,18 @@
     justify-content: space-between;
 }
 
+h1 {
+    text-align: center;
+}
 
-.btnContainer {
+.formContainer {
     width: 100%;
     display: flex;
 }
+
+.startBtn {
+    font-size: 1.2rem;
+    text-align: center;
+    padding: 10px;
+    
+  }

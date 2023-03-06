@@ -15,12 +15,12 @@
             <div class="wrapper card">
                 <!-- title -->
                 <div class="titleContainer">
-                    <h1>Best Quiz App!</h1>
+                    <h1>Random Quiz Game!</h1>
                 </div>
 
-                <form class="btnContainer" name="nameForm" id="nameForm">
+                <form class="formContainer" name="nameForm" id="nameForm">
                     <label class="sr-only" for="nameInput">Enter your name</label>
-                    <input placeholder="please enter your name" type="text" name="nameInput" id="nameInput" required>
+                    <input placeholder="Please enter your username" type="text" name="nameInput" id="nameInput" required>
                     <button id="startBtn" class="startBtn">Start</button>
                 </form>
             </div>
@@ -78,7 +78,7 @@
                 <div class="scoreStats">
                     <h3>High Score</h3>
                     <!-- Display firebase highscore -->
-                    <p id="yourHighScore"></p>
+                    <ul id="yourHighScore"></ul>
                     <h3>Your Score </h3>
                     <!-- Display local your score -->
                     <p id="yourLocalScore"></p>
