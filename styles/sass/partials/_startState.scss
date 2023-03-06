@@ -9,9 +9,21 @@ h1 {
     text-align: center;
 }
 
+.instructions {
+    width: 70%;
+    padding-top: 20px;
+    display: flex;
+    flex-flow: row wrap;
+    padding-top: 100px;
+    text-align: center;
+    justify-content: center;
+   
+}
+
 .formContainer {
     width: 100%;
     display: flex;
+    padding-top: 25px;
 }
 
 .startBtn {

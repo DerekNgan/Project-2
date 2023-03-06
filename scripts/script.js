@@ -164,7 +164,7 @@ function playTimer() {
         timeDisplay.textContent = timeLeft;
 
         if (timeLeft > 0) {
-            setTimeout(countdown, 1000);
+            setTimeout(countdown, 40);
         }
 
         // STLYING FOR FINAL FIVE SECONDS -> Courtsey of Derek Ngan

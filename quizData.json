@@ -70,10 +70,28 @@
                 "The Australian Annihilator"
             ],
             "correctAnswer": 3
+        },
+        {
+            "question": "As of March 1, 2023, Toronto's current mayor is",
+            "answers": [
+                "Gil Penalosa",
+                "John Tory",
+                "Jennifer Keesmaat",
+                "Jennifer McKelvie"
+            ],
+            "correctAnswer": 4
         }
 
     ],
     "trueFalseQuestions": [
+        {
+            "question": "A Hotdog is a sandwich",
+            "answers": [
+                "yes",
+                "no"
+            ],
+            "correctAnswer": 1
+        },
         {
             "question": "Ketchup is a condiment",
             "answers": [
@@ -122,8 +140,19 @@
 
             ],
             "correctAnswer": 1
-        }
+        },
+        {
+            "question": "Toronto has a WNBA team",
+            "answers": [
+                "True",
+                "False"
+            ],
+            "correctAnswer": 1
+        },
 
+        {
+          
+        }
     ],
     "questionType": [
         "fourAnswerQuestions",
