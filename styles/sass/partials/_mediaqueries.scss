@@ -4,9 +4,6 @@
     .titleContainer h1 {
         font-size: 2rem;
     }
-    .formContainer {
-        padding-top: 80%;
-    }
 }
 
 @media (min-width: 600px) {
@@ -17,7 +14,6 @@
         font-size: 2.5rem;
     }
     .formContainer {
-        padding-top: 50%;
         width: 70%;
     }
 }

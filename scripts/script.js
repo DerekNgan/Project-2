@@ -40,7 +40,7 @@ const resetState = document.getElementById('reset');
 const highScoreDisplay = document.getElementById('yourHighScore')
 
 // MISC VARIABLES
-let timeLeft = 5;
+let timeLeft = 500;
 let localScore = 0;
 let userName = '';
 
