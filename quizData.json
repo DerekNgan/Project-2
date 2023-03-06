@@ -1,22 +1,33 @@
 {
     "fourAnswerQuestions": [
         {
-            "question": ": is this test working?",
+            "question": "The official words of House Lannister are",
             "answers": [
-                "yes",
-                "no",
-                "maybe",
-                "so"
+                "Hear Me Roar",
+                "A Lannister Always Pays Their Debts",
+                "Lannisters don't act like fools",
+                "Lannisters shits gold"
             ],
             "correctAnswer": 1
         },
         {
+            "questions": "Tyreek Hill is nicknamed",
+            "answers": [
+                "The bolt",
+                "Cheetah",
+                "The Blur",
+                "Zoom"
+
+            ],
+            "correctAnswer": 2
+        },
+        {
             "question": "What is the fastest animal",
             "answers": [
-                "turtle",
-                "cheetah",
-                "walrus",
-                "pig"
+                "Turtle",
+                "Cheetah",
+                "Walrus",
+                "Pig"
             ],
             "correctAnswer": 2
         },
@@ -39,7 +50,28 @@
                 "Canada"
             ],
             "correctAnswer": 4
+        },
+        {
+            "question": "In Sam Rami's Spiderman. The public identity of Spiderman is",
+            "answers": [
+                "Norman Osborn",
+                "Gwen Stacy",
+                "Peter Parker",
+                "Miles Morales "
+            ],
+            "correctAnswer": 3
+        },
+        {
+            "questions": "Steve Irwin is famously known as",
+            "answers": [
+                "The Alligator Hunter",
+                "Gator's Gat",
+                "The Crocodile Hunter",
+                "The Australian Annihilator"
+            ],
+            "correctAnswer": 3
         }
+
     ],
     "trueFalseQuestions": [
         {
@@ -59,21 +91,39 @@
             "correctAnswer": 2
         },
         {
-            "question": "THREE what side of the road do Canadians drive on?",
-            "answers": [
-                "Left",
-                "Right"
-            ],
-            "correctAnswer": 2
-        },
-        {
-            "question": "Four: Australia is a continent",
+            "question": "Canadians drive on the right side of the road",
             "answers": [
                 "True",
                 "False"
             ],
             "correctAnswer": 1
+        },
+        {
+            "question": "Australia is a continent",
+            "answers": [
+                "True",
+                "False"
+            ],
+            "correctAnswer": 1
+        },
+        { 
+            "question": "Johnny Depp portrays Grindewald in Fantastic Beasts 3",
+            "answers": [
+                "True",
+                "False"
+            ],
+            "correctAnswer": 2
+        },
+        {
+            "question": "Toronto has an NBA team",
+            "answers": [
+                "True",
+                "False"
+
+            ],
+            "correctAnswer": 1
         }
+
     ],
     "questionType": [
         "fourAnswerQuestions",
