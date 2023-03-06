@@ -1,5 +1,5 @@
 import firebaseInfo from "./firebaseConfig.js"
-import { get, getDatabase, ref, update, push, query, orderByChild, limitToFirst, remove } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js";
+import { get, getDatabase, ref, update, push, query, orderByValue, limitToFirst, remove } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js";
 
 import { fourAnswerQuestions, trueFalseQuestions } from "./dataObj.js";
 
@@ -40,7 +40,7 @@ const resetState = document.getElementById('reset');
 const highScoreDisplay = document.getElementById('yourHighScore')
 
 // MISC VARIABLES
-let timeLeft = 500;
+let timeLeft = 5;
 let localScore = 0;
 let userName = '';
 
@@ -121,6 +121,109 @@ function getQuestion() {
 }
 
 
+function appendHighScore() {
+    // variable for query -> takes score ref and order BY point value
+    const orderedFirebaseScores = query(scoreRef, orderByValue());
+
+
+    get(orderedFirebaseScores).then(function (data) {
+        if (data.exists()) {
+            // store current data as a variable (score array w ALL obj -name and score)
+            const highScoreData = data.val();
+            console.log(highScoreData)
+            // clearing the list to reappend
+            highScoreDisplay.innerHTML = '';
+
+            // for (let player in highScoreData) {
+            //     const DBUser = highScoreData[player].user;
+            //     const DBPoints = highScoreData[player].points;
+            //     const newli = document.createElement('li')
+            //     newli.classList.add('highscore')
+            //     newli.textContent = `${DBUser} --- ${DBPoints}`
+            //     highScoreDisplay.appendChild(newli)
+            // }
+
+
+            // creating element to store each value  in 
+            // highScoreData.forEach(function (score) {
+
+            //     newli.textContent = `${score.name} --- ${score.points}`
+            //     highScoreDisplay.appendChild(newli)
+            // })
+
+        } else {
+            console.log('sorry no data found')
+        }
+    })
+}
+
+function playTimer() {
+    // JS timer 
+    function countdown() {
+        timeLeft--;
+        timeDisplay.textContent = timeLeft;
+
+        if (timeLeft > 0) {
+            setTimeout(countdown, 1000);
+        }
+
+        // STLYING FOR FINAL FIVE SECONDS -> Courtsey of Derek Ngan
+        if (timeLeft === 5) {
+            bar.style.opacity = '0.25';
+        } else if (timeLeft === 4) {
+            bar.style.opacity = '1';
+        } else if (timeLeft === 3) {
+            bar.style.opacity = '0.25';
+        } else if (timeLeft === 2) {
+            bar.style.opacity = '1';
+        } else if (timeLeft === 1) {
+            bar.style.opacity = '0.25';
+        } else {
+            bar.style.opacity = '1';
+        }
+
+        //Once timeLeft = 0, we will use changeState function to hide. Hide playState to make resetState appear 
+
+        if (timeLeft === 0) {
+
+            // WANTING OBJ W USER NAME AS A VALUE
+            // const userScore = { user: userName, points: localScore }
+
+            const userKey = userName;
+            const userScore = {}
+            userScore[userKey] = localScore;
+
+
+
+
+
+            //Upload to Firebase when the timer runs out 
+            // push(scoreRef, userScore)
+            update(scoreRef, userScore);
+
+
+            appendHighScore();
+
+            yourLocalScore.textContent = `${userName}: ${localScore} points`
+
+            changeState(playState, resetState);
+        }
+    };
+
+    setTimeout(countdown, 1000);
+
+
+    const bar = document.querySelector('#bar');
+    let timeLimit = `${String(timeLeft)}s`;
+    bar.style.animationDuration = timeLimit;
+}
+
+function changeState(hiddenState, activeState) {
+    // when start button is pressed, start state is hidden and play state appears
+    hiddenState.classList.add('hidden');
+    activeState.classList.remove('hidden');
+}
+
 function answerEval(event) {
     // ONLY ON BTN CLICK
     if (event.target.tagName === 'BUTTON') {
@@ -169,98 +272,6 @@ function answerEval(event) {
 
     }
 }
-
-function appendHighScore() {
-    // variable for query -> takes score ref and order BY point value
-    let orderedFirebaseScores = query(scoreRef, orderByChild('points'), limitToFirst(5));
-
-    get(orderedFirebaseScores).then(function (data) {
-        if (data.exists()) {
-            // store current data as a variable (score array w ALL obj -name and score)
-            const highScoreData = data.val();
-            console.log(highScoreData)
-            // clearing the list to reappend
-            highScoreDisplay.innerHTML = '';
-
-            for (let player in highScoreData) {
-                const DBUser = highScoreData[player].user;
-                const DBPoints = highScoreData[player].points;
-                const newli = document.createElement('li')
-                newli.classList.add('highscore')
-                newli.textContent = `${DBUser} --- ${DBPoints}`
-                highScoreDisplay.appendChild(newli)
-            }
-
-
-            // creating element to store each value  in 
-            // highScoreData.forEach(function (score) {
-
-            //     newli.textContent = `${score.name} --- ${score.points}`
-            //     highScoreDisplay.appendChild(newli)
-            // })
-
-        } else {
-            console.log('sorry no data found')
-        }
-    })
-}
-
-function playTimer() {
-    // JS timer 
-    function countdown() {
-        timeLeft--;
-        timeDisplay.textContent = timeLeft;
-        if (timeLeft > 0) {
-            setTimeout(countdown, 1000);
-        }
-
-        // STLYING FOR FINAL FIVE SECONDS -> Courtsey of Derek Ngan
-        if (timeLeft === 5) {
-            bar.style.opacity = '0.25';
-        } else if (timeLeft === 4) {
-            bar.style.opacity = '1';
-        } else if (timeLeft === 3) {
-            bar.style.opacity = '0.25';
-        } else if (timeLeft === 2) {
-            bar.style.opacity = '1';
-        } else if (timeLeft === 1) {
-            bar.style.opacity = '0.25';
-        } else {
-            bar.style.opacity = '1';
-        }
-
-        //Once timeLeft = 0, we will use changeState function to hide. Hide playState to make resetState appear 
-
-        if (timeLeft === 0) {
-
-            // WANTING OBJ W USER NAME AS A VALUE
-            const userScore = { user: userName, points: localScore }
-
-            //Upload to Firebase when the timer runs out 
-            push(scoreRef, userScore)
-
-            appendHighScore();
-
-            yourLocalScore.textContent = `${userName}: ${localScore} points`
-
-            changeState(playState, resetState);
-        }
-    };
-
-    setTimeout(countdown, 1000);
-
-
-    const bar = document.querySelector('#bar');
-    let timeLimit = `${String(timeLeft)}s`;
-    bar.style.animationDuration = timeLimit;
-}
-
-function changeState(hiddenState, activeState) {
-    // when start button is pressed, start state is hidden and play state appears
-    hiddenState.classList.add('hidden');
-    activeState.classList.remove('hidden');
-}
-
 
 answerBox.addEventListener('click', answerEval)
 
@@ -327,12 +338,11 @@ resetBtn.addEventListener('click', function () {
     // localScore is reset to 0 
     localScore = 0;
     // time limit reset
-    timeLeft = 500;
+    timeLeft = 5;
     userName = '';
 })
 
 
-
-
+appendHighScore()
 
 
