@@ -542,12 +542,15 @@ h1 {
   padding: 20px;
   -webkit-transition: 0.2s ease-in-out;
   transition: 0.2s ease-in-out;
+  -webkit-backdrop-filter: blur(6px) opacity(0.5);
+          backdrop-filter: blur(6px) opacity(0.5);
 }
 
 .highScoreBoard,
 .localScoreContainer {
   width: 100%;
   padding: 0 20px;
+  z-index: 10;
 }
 
 .scoreItem {
@@ -593,13 +596,28 @@ h1 {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  gap: 20px;
+  color: rgb(145, 113, 192);
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
 }
 .localScoreContainer p {
   margin: 0;
 }
+.localScoreContainer:hover, .localScoreContainer:focus {
+  -webkit-transform: scale(1.02);
+          transform: scale(1.02);
+  color: rgb(137, 208, 124);
+}
+.localScoreContainer:hover .line, .localScoreContainer:focus .line {
+  border-color: rgb(137, 208, 124);
+}
 
 .correct {
-  background-color: rgb(174, 244, 160);
+  background-color: rgb(137, 208, 124);
 }
 
 .incorrect {

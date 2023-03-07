@@ -199,7 +199,7 @@ function playTimer() {
 
             localUserElement.textContent = `${userName}`
 
-            localScoreElement.textContent = `${localScore}`
+            localScoreElement.textContent = `${localScore}pnts`
 
 
             changeState(playState, resetState);
