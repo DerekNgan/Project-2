@@ -141,7 +141,6 @@
                 "The Australian Annihilator"
             ],
             "correctAnswer": 3
-<<<<<<< HEAD
         },
         {
             "question": "As of March 1, 2023, Toronto's current mayor is",
@@ -174,22 +173,25 @@
                 "Rian Johnson"
             ],
             "correctAnswer": 3
-=======
->>>>>>> 43dcecf2c10e74d0d26c83f87b36314a8b276cae
         }
     ],
     "trueFalseQuestions": [
         {
-<<<<<<< HEAD
+            "question": "Ketchup is a condiment",
+            "answers": [
+                "True",
+                "False"
+            ],
+            "correctAnswer": 1
+        },
+        {
             "question": "The Eglington Crosstown LRT was completed in 2022",
-=======
-            "question": "Is ketchup a condiment?",
->>>>>>> 43dcecf2c10e74d0d26c83f87b36314a8b276cae
             "answers": [
                 "True",
                 "False"
             ],
             "correctAnswer": 2
+    
         },
         {
             "question": "A Hotdog is a sandwich",
