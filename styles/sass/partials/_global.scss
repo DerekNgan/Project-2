@@ -40,6 +40,9 @@ h2 {
 body {
   height: 100vh;
   background-color: $backgroundColor;
+  background-image: url(/assets/3188416.jpg);
+  background-size: cover;
+
 }
 
 
@@ -50,8 +53,9 @@ body {
   align-items: center;
   font-size: 1rem;
   height: 100%;
-  background-color: $backgroundColor;
+  // background-color: $backgroundColor;
 }
+
 
 // STATE SECTION
 .state {
@@ -61,7 +65,7 @@ body {
   height: 100%;
 }
 
-// PLAYSTATE SPACING
+// PLAYSTATE SPACING / STYLING
 .play{
   display: flex;
   flex-direction: row;
@@ -87,10 +91,17 @@ body {
   padding-top: 100px;
 }
 
-// ICON PLACEMENT
+// ICON PLACEMENT / STYLING
 .titleContainer{
   display: flex;
   flex-direction: column;
+}
+
+.mainLogo{
+  width: 100%;
+  height: 100%;
+  fill: $buttonFontColor;
+  opacity: 0.9;
 }
 
 // BUTTON STYLES
@@ -115,7 +126,7 @@ button:focus {
   color: $buttonFontColor;
 }
 
-// START BUTTON / FORM STYLING AND SPACING
+// START BUTTON / RESET / FORM STYLING AND SPACING
 .formContainer .startBtn{
   margin-top: 50px;
   padding: 20px;
@@ -131,6 +142,10 @@ button:focus {
     font-weight: 700;
 }
 
+.btnContainer{
+  width: 70%;
+}
+
 form{
   margin-top: 30px;
 
@@ -141,6 +156,8 @@ form{
     border-bottom: 2px solid $buttonColor;
     color: white;
     padding-bottom: 10px;
+    font-size: 2rem;
+    border-radius: 50px;
   }
 }
 
@@ -160,6 +177,7 @@ form{
 
 .scoreStats{
   font-size: 2rem;
+  color: $buttonFontColor;
 }
 
 
