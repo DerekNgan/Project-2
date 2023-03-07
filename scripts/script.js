@@ -17,7 +17,7 @@ const scoreRef = ref(database, `/score`);
 
 // HTML VARIABLES
 const questionDisplay = document.getElementById('question');
-const yourHighScore = document.getElementById('yourHighScore');
+const topFiveHighScore = document.getElementById('yourHighScore');
 const yourLocalScore = document.getElementById('yourLocalScore');
 
 
@@ -40,7 +40,11 @@ const resetState = document.getElementById('reset');
 const highScoreDisplay = document.getElementById('yourHighScore')
 
 // MISC VARIABLES
-let timeLeft = 5;
+<<<<<<< HEAD
+let timeLeft = 500;
+=======
+let timeLeft = 40;
+>>>>>>> 5946291748c90b7c59da6487634628e0bdeba81c
 let localScore = 0;
 let userName = '';
 
@@ -123,33 +127,38 @@ function getQuestion() {
 
 function appendHighScore() {
     // variable for query -> takes score ref and order BY point value
-    const orderedFirebaseScores = query(scoreRef, orderByValue());
 
 
-    get(orderedFirebaseScores).then(function (data) {
+
+    get(scoreRef).then(function (data) {
         if (data.exists()) {
             // store current data as a variable (score array w ALL obj -name and score)
             const highScoreData = data.val();
             console.log(highScoreData)
-            // clearing the list to reappend
-            highScoreDisplay.innerHTML = '';
 
-            // for (let player in highScoreData) {
-            //     const DBUser = highScoreData[player].user;
-            //     const DBPoints = highScoreData[player].points;
-            //     const newli = document.createElement('li')
-            //     newli.classList.add('highscore')
-            //     newli.textContent = `${DBUser} --- ${DBPoints}`
-            //     highScoreDisplay.appendChild(newli)
-            // }
+            const highscoreArr = [];
 
+            // loop through object 
+            for (let player in highScoreData) {
+                // push each item in an array
+                console.log(`name is here -> ${player} actual score -> ${highScoreData[player]}`)
+                const scoreObj = { user: player, score: highScoreData[player] }
+                highscoreArr.push(scoreObj);
+            }
 
-            // creating element to store each value  in 
-            // highScoreData.forEach(function (score) {
+            const sortedHighScore = highscoreArr.sort(function (a, b) { return b.score - a.score })
 
-            //     newli.textContent = `${score.name} --- ${score.points}`
-            //     highScoreDisplay.appendChild(newli)
-            // })
+            console.log(sortedHighScore)
+
+            for (let topPlayer = 0; topPlayer < 3; topPlayer++) {
+                const playerStats = sortedHighScore[topPlayer]
+                const newLi = document.createElement('li')
+                newLi.innerHTML = `
+                <span class="userStat">${playerStats.user}</span>
+                <span class="scoreStat">${playerStats.score} pnts</span>
+                `
+                topFiveHighScore.appendChild(newLi)
+            }
 
         } else {
             console.log('sorry no data found')
@@ -193,15 +202,11 @@ function playTimer() {
             const userScore = {}
             userScore[userKey] = localScore;
 
-
-
-
-
             //Upload to Firebase when the timer runs out 
             // push(scoreRef, userScore)
             update(scoreRef, userScore);
 
-
+            topFiveHighScore.innerHTML = '';
             appendHighScore();
 
             yourLocalScore.textContent = `${userName}: ${localScore} points`
@@ -276,40 +281,6 @@ function answerEval(event) {
 answerBox.addEventListener('click', answerEval)
 
 
-
-
-
-
-// call this function when want new set of questions to load
-
-
-// questionLoad();
-
-
-
-
-// startBtn.addEventListener('click', function () {
-//     // hiding start state and activating playstate
-//     changeState(startState, playState);
-//     // localScore is reset to 0 
-//     localScore = 0;
-//     // get question on button press - CHANGE IF LAG IS REAL
-//     getQuestion();
-//     //time is shown
-//     timeDisplay.textContent = timeLeft;
-//     // timer starts
-//     playTimer();
-
-// })
-
-
-
-
-
-// add a form + label + input to start state HTML
-// change button eventlistener to formeventlistener
-
-
 nameForm.addEventListener('submit', function (event) {
     event.preventDefault();
     // console.log (nameInput.value)
@@ -328,7 +299,6 @@ nameForm.addEventListener('submit', function (event) {
 
 });
 
-
 //after timer end run changeState() so now the hidden state will be play state and the active state is the reset state
 resetBtn.addEventListener('click', function () {
     // hiding start state and activating playstate
@@ -338,11 +308,10 @@ resetBtn.addEventListener('click', function () {
     // localScore is reset to 0 
     localScore = 0;
     // time limit reset
-    timeLeft = 5;
+    timeLeft = 40;
     userName = '';
 })
 
 
-appendHighScore()
 
 

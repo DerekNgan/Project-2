@@ -83,13 +83,12 @@
             "correctAnswer": 1
         },
         {
-            "questions": "Tyreek Hill is nicknamed",
+            "question": "Tyreek Hill is nicknamed",
             "answers": [
                 "The bolt",
                 "Cheetah",
                 "The Blur",
                 "Zoom"
-
             ],
             "correctAnswer": 2
         },
@@ -124,7 +123,7 @@
             "correctAnswer": 4
         },
         {
-            "question": "In Sam Rami's Spiderman. The public identity of Spiderman is",
+            "question": "In Sam Rami's Spiderman. The public identity of Spiderman is...",
             "answers": [
                 "Norman Osborn",
                 "Gwen Stacy",
@@ -134,7 +133,7 @@
             "correctAnswer": 3
         },
         {
-            "questions": "Steve Irwin is famously known as",
+            "questions": "Steve Irwin is famously known as:",
             "answers": [
                 "The Alligator Hunter",
                 "Gator's Gat",
@@ -142,6 +141,7 @@
                 "The Australian Annihilator"
             ],
             "correctAnswer": 3
+<<<<<<< HEAD
         },
         {
             "question": "As of March 1, 2023, Toronto's current mayor is",
@@ -174,11 +174,17 @@
                 "Rian Johnson"
             ],
             "correctAnswer": 3
+=======
+>>>>>>> 43dcecf2c10e74d0d26c83f87b36314a8b276cae
         }
     ],
     "trueFalseQuestions": [
         {
+<<<<<<< HEAD
             "question": "The Eglington Crosstown LRT was completed in 2022",
+=======
+            "question": "Is ketchup a condiment?",
+>>>>>>> 43dcecf2c10e74d0d26c83f87b36314a8b276cae
             "answers": [
                 "True",
                 "False"
@@ -225,7 +231,7 @@
             ],
             "correctAnswer": 1
         },
-        { 
+        {
             "question": "Johnny Depp portrays Grindewald in Fantastic Beasts 3",
             "answers": [
                 "True",
@@ -238,7 +244,6 @@
             "answers": [
                 "True",
                 "False"
-
             ],
             "correctAnswer": 1
         },
@@ -275,16 +280,9 @@
             ],
             "correctAnswer": 2
         }
-
     ],
     "questionType": [
         "fourAnswerQuestions",
         "trueFalseQuestions"
-    ],
-    "score": [
-        {
-            "name": "test",
-            "score": 1
-        }
     ]
 }
