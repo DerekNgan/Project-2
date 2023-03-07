@@ -1,6 +1,78 @@
 {
     "fourAnswerQuestions": [
         {
+            "question": "6 ÷ 2(1+2)",
+            "answers": [
+                6,
+                1,
+                9,
+                0
+            ],
+            "correctAnswer": 3
+        },
+        {
+            "question": "What is 7% equal to?",
+            "answers": [
+                0.007,
+                0.07,
+                0.7,
+                7
+            ],
+            "correctAnswer": 2
+            
+        },
+        {
+            "question": "If David’s age is 27 years old in 2011. What was his age in 2003?",
+            "answers": [
+                "17 years old",
+                "37 years old",
+                "19 years old",
+                "20 years old"
+            ],
+            "correctAnswer": 3
+        },
+        {
+            "question": "In nearly all versions, Joe Chill is responsible for",
+            "answers": [
+                "Creating the Captain American super soldier formula",
+                "Becoming a Lich in service to Archimonde",
+                "Killing Bruce Wayne's parents",
+                "Founding the Orange Lantern Corps"
+            ],
+            "correctAnswer": 3
+        },
+        {
+            "question": "In the Naruto anime, Sauske's family is known for possessing the",
+            "answers": [
+                "Rinnegan", 
+                "Jogan",
+                "Byakugan", 
+                "Sharingan"
+            ],
+            "correctAnswer": 4
+        },
+        {
+            "question": "Tony Soprano is apart of which crime family?",
+            "answers": [
+                "DiMeo",
+                "Lupertazzi",
+                "Mangano",
+                "Soprano"
+            ],
+            "correctAnswer": 1
+        },
+        {
+            "question": "In Warcraft 3, Arthas' first act of genocide occurs in the city of",
+            "answers": [
+                "Lordaeron",
+                "Stormwind",
+                "Quel'Thalas",
+                "Stratholme"
+            ],
+            "correctAnswer": 4
+            
+        },
+        {
             "question": "The official words of House Lannister are",
             "answers": [
                 "Hear Me Roar",
@@ -79,30 +151,69 @@
                 "Jennifer McKelvie"
             ],
             "correctAnswer": 4
+        },
+
+        {
+            "question": "Match the person with quote: 'The hardest choices require the strongest of wills'",
+            "answers": [
+                "Peter Parker",
+                "Thanos",
+                "Tony Stark",
+                "Doctor Strange"
+            ],
+            "correctAnswer": 2
+
+        },
+        {
+            "question": "Which one of these directors was responsible for the 2009 live adaptation of The Last Airbender",
+            "answers": [
+                "Dwayne Johnson",
+                "Adam Sandler",
+                "M Night Shyamalan",
+                "Rian Johnson"
+            ],
+            "correctAnswer": 3
         }
     ],
     "trueFalseQuestions": [
         {
-            "question": "A Hotdog is a sandwich",
-            "answers": [
-                "yes",
-                "no"
-            ],
-            "correctAnswer": 1
-        },
-        {
             "question": "Ketchup is a condiment",
             "answers": [
-                "yes",
-                "no"
+                "True",
+                "False"
             ],
             "correctAnswer": 1
         },
         {
-            "question": "What is the opposite of north",
+            "question": "The Eglington Crosstown LRT was completed in 2022",
             "answers": [
-                "north",
-                "south"
+                "True",
+                "False"
+            ],
+            "correctAnswer": 2
+    
+        },
+        {
+            "question": "A Hotdog is a sandwich",
+            "answers": [
+                "True",
+                "False"
+            ],
+            "correctAnswer": 1
+        },
+        {
+            "question": "Ketchup is the most popular worldwide condiment",
+            "answers": [
+                "True",
+                "False"
+            ],
+            "correctAnswer": 1
+        },
+        {
+            "question": "West is the opposite of South",
+            "answers": [
+                "True",
+                "False"
             ],
             "correctAnswer": 2
         },
@@ -152,11 +263,32 @@
                 "True",
                 "False"
             ],
-            "correctAnswer": 1
+            "correctAnswer": 2
         },
 
         {
-          
+          "question": "Step Brothers was released in 2009",
+          "answers": [
+            "True",
+            "False"
+          ],
+          "correctAnswer": 2
+        },
+        {
+            "question": "The Triad originate from Japan",
+            "answer": [
+                "True",
+                "False"
+            ],
+            "correctAnswer": 2
+        },
+        {
+            "question": "New York City is home to the American Mafia's 4",
+            "answers": [
+               "True",
+               "False"
+            ],
+            "correctAnswer": 2
         }
     ],
     "questionType": [
