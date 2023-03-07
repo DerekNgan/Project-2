@@ -290,7 +290,7 @@ body {
 
 .state {
   width: 100%;
-  height: 100%;
+  height: 100vh;
 }
 
 .play {
@@ -323,24 +323,7 @@ body {
       -ms-flex-align: center;
           align-items: center;
   width: 80%;
-  padding-top: 115px;
-}
-
-.titleContainer {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-
-.mainLogo {
-  width: 100%;
-  height: 100%;
-  fill: rgb(213, 213, 235);
-  opacity: 0.9;
+  padding-top: 30px;
 }
 
 button {
@@ -369,8 +352,7 @@ button:focus {
 }
 
 .formContainer .startBtn {
-  margin-top: 50px;
-  padding: 20px;
+  margin-top: 25px;
   text-transform: uppercase;
   font-size: 2rem;
   font-weight: 700;
@@ -385,20 +367,6 @@ button:focus {
 
 .btnContainer {
   width: 70%;
-}
-
-form {
-  margin-top: 30px;
-}
-form input {
-  border: none;
-  background-color: rgb(51, 51, 80);
-  text-align: center;
-  border-bottom: 2px solid rgb(145, 113, 192);
-  color: white;
-  padding-bottom: 10px;
-  font-size: 2rem;
-  border-radius: 25px;
 }
 
 .formContainer {
@@ -437,6 +405,7 @@ form input {
 }
 
 h1 {
+  margin-top: 60px;
   text-align: center;
 }
 
@@ -450,11 +419,38 @@ h1 {
   -webkit-box-direction: normal;
       -ms-flex-flow: row wrap;
           flex-flow: row wrap;
-  padding-top: 100px;
   text-align: center;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+.instructions p {
+  font-size: 1.5rem;
+  color: rgb(213, 213, 235);
+}
+
+.titleContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.logoContainer {
+  width: 70%;
+}
+
+.mainLogo {
+  width: 100%;
+  height: 100%;
+  fill: rgb(213, 213, 235);
+  opacity: 0.9;
 }
 
 .formContainer {
@@ -463,6 +459,18 @@ h1 {
   display: -ms-flexbox;
   display: flex;
   padding-top: 25px;
+}
+
+.nameInput {
+  border: none;
+  background-color: rgb(51, 51, 80);
+  text-align: center;
+  border-bottom: 2px solid rgb(145, 113, 192);
+  color: white;
+  padding-bottom: 10px;
+  font-size: 2rem;
+  border-radius: 25px;
+  width: 100%;
 }
 
 .startBtn {
@@ -541,6 +549,31 @@ h1 {
     width: 0%;
   }
 }
+.questionsContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  min-height: 200px;
+  background-color: rgb(213, 213, 235);
+  width: 100%;
+  border-radius: 25px;
+  padding: 20px;
+}
+.questionsContainer h2 {
+  font-size: 1.5rem;
+  color: rgb(51, 51, 80);
+}
+
 .answersContainer {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -549,16 +582,21 @@ h1 {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  width: 100%;
+  gap: 15px;
+  min-height: 200px;
 }
 
 .answerButton {
-  width: 500px;
+  width: 100%;
+  margin: 0;
+  font-size: 2rem;
 }
 
 .scoreText {
@@ -676,9 +714,59 @@ h1 {
     width: 90%;
   }
   .titleContainer h1 {
-    font-size: 3rem;
+    font-size: 2rem;
   }
-  .formContainer {
-    width: 70%;
+}
+@media (min-width: 550px) {
+  .questionsContainer {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    min-height: 200px;
+    width: 100%;
+    border-radius: 25px;
+    padding: 20px;
+  }
+  .questionsContainer h2 {
+    font-size: 2.5rem;
+  }
+  .answersContainer {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    width: 100%;
+    gap: 15px;
+    min-height: 200px;
+  }
+  .answerButton {
+    width: 40%;
+    min-width: 100px;
+    margin: 0;
+    -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1;
+    font-size: 2rem;
   }
 }

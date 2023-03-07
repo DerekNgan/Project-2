@@ -12,22 +12,42 @@
     width: 90%;
    }
     .titleContainer h1 {
-        font-size: 3rem;
-    }
-    .formContainer {
-        width: 70%;
+        font-size: 2rem;
     }
 }
 
-@media (min-width: 768px) {
-   
+@media (min-width: 550px) {
+    .questionsContainer{
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        justify-content: center;
+        min-height: 200px;
+        width: 100%;
+        border-radius: 25px;
+        padding: 20px;
+        
+        h2{
+            font-size: 2.5rem;
+        }
+    }
 
+.answersContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 15px;
+    min-height: 200px;
 }
 
-@media (min-width: 992px) {
-
+.answerButton {
+    width: 40%;
+    min-width: 100px;
+    margin: 0;
+    flex-grow: 1;
+    font-size: 2rem;
 }
-
-@media (min-width: 1200px) {
-
 }

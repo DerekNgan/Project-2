@@ -1,25 +1,15 @@
 import firebaseInfo from "./firebaseConfig.js"
-import { get, getDatabase, ref, update, push, query, orderByValue, limitToFirst, remove } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js";
-
-import { fourAnswerQuestions, trueFalseQuestions } from "./dataObj.js";
+import { get, getDatabase, ref, update} from "https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js";
 
 const database = getDatabase(firebaseInfo);
 const dbRef = ref(database);
 
 // SPECIFIC OBJECT REFS
-// const fourAnswerRef = ref(database, `/fourAnswerQuestions`);
-
-// const trueFalseRef = ref(database, `/trueFalseQuestions`);
-
-// const questionTypeRef = ref(database, `/questionType`);
-
 const scoreRef = ref(database, `/score`);
 
-
-
 // START STATE
+// const startBtn = document.getElementById('startBtn');
 const startState = document.getElementById('start');
-const startBtn = document.getElementById('startBtn');
 const nameForm = document.getElementById('nameForm');
 const nameInput = document.getElementById('nameInput');
 
@@ -29,7 +19,7 @@ const scoreDisplay = document.getElementById('score');
 const timeDisplay = document.getElementById('time');
 const questionDisplay = document.getElementById('question');
 const answerBox = document.getElementById('answersContainer');
-const playBtn = document.getElementById('playBtn');
+// const playBtn = document.getElementById('playBtn');
 
 // RESET STATE
 const resetBtn = document.getElementById('resetBtn');
@@ -39,13 +29,12 @@ const localUserElement = document.getElementById('localUser')
 const localScoreElement = document.getElementById('localScore');
 
 // MISC VARIABLES
-let timeLeft = 10;
+let timeLeft = 40;
 let localScore = 0;
 let userName = '';
 
 
 // FUNCTIONS
-
 function randomArrVal(arr) {
     const randomIndex = Math.floor(Math.random() * arr.length)
     return arr[randomIndex]
@@ -102,19 +91,14 @@ function getQuestion() {
 
             update(dbRef, correctObj);
 
-
-
             // RESET DURING RESET PHASE
         } else {
-            console.log('OAUR NAUR - NAUR QUESTIN AUR AURNSWER');
+            alert('Random Error! Could not retrieve question data from Firebase!')
         }
     })
 }
 
-
 function appendHighScore() {
-    // variable for query -> takes score ref and order BY point value
-
 
     get(scoreRef).then(function (data) {
         if (data.exists()) {
@@ -164,7 +148,7 @@ function playTimer() {
             setTimeout(countdown, 1000);
         }
 
-        // STLYING FOR FINAL FIVE SECONDS -> Courtsey of Derek Ngan
+        // STLYING FOR FINAL FIVE SECONDS -> Courtesy of Derek Ngan
         if (timeLeft === 5) {
             bar.style.opacity = '0.25';
         } else if (timeLeft === 4) {
@@ -299,7 +283,7 @@ resetBtn.addEventListener('click', function () {
     // localScore is reset to 0 
     localScore = 0;
     // time limit reset
-    timeLeft = 10;
+    timeLeft = 40;
     userName = '';
 })
 

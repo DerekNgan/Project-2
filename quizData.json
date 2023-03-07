@@ -133,7 +133,7 @@
             "correctAnswer": 3
         },
         {
-            "questions": "Steve Irwin is famously known as:",
+            "question": "Steve Irwin is famously known as:",
             "answers": [
                 "The Alligator Hunter",
                 "Gator's Gat",
@@ -276,7 +276,7 @@
         },
         {
             "question": "The Triad originate from Japan",
-            "answer": [
+            "answers": [
                 "True",
                 "False"
             ],
