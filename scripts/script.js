@@ -15,10 +15,6 @@ const dbRef = ref(database);
 
 const scoreRef = ref(database, `/score`);
 
-// HTML VARIABLES
-const questionDisplay = document.getElementById('question');
-const topFiveHighScore = document.getElementById('yourHighScore');
-const yourLocalScore = document.getElementById('yourLocalScore');
 
 
 // START STATE
@@ -31,20 +27,19 @@ const nameInput = document.getElementById('nameInput');
 const playState = document.getElementById('play');
 const scoreDisplay = document.getElementById('score');
 const timeDisplay = document.getElementById('time');
+const questionDisplay = document.getElementById('question');
 const answerBox = document.getElementById('answersContainer');
 const playBtn = document.getElementById('playBtn');
 
 // RESET STATE
 const resetBtn = document.getElementById('resetBtn');
 const resetState = document.getElementById('reset');
-const highScoreDisplay = document.getElementById('yourHighScore')
+const topFiveHighScore = document.getElementById('highScore');
+const localUserElement = document.getElementById('localUser')
+const localScoreElement = document.getElementById('localScore');
 
 // MISC VARIABLES
-<<<<<<< HEAD
-let timeLeft = 500;
-=======
-let timeLeft = 40;
->>>>>>> 5946291748c90b7c59da6487634628e0bdeba81c
+let timeLeft = 5;
 let localScore = 0;
 let userName = '';
 
@@ -107,14 +102,6 @@ function getQuestion() {
 
             update(dbRef, correctObj);
 
-            // const currentQRef = ref(database, `/${randomQType}/${randomQType.randomQuestion}`)
-
-            // console.log(randomQType.indexOf(randomQuestion))
-
-            // remove(currentQRef);
-            // remove question
-            // get current path randomQuestion
-            // use remove() to remove :)
 
 
             // RESET DURING RESET PHASE
@@ -127,7 +114,6 @@ function getQuestion() {
 
 function appendHighScore() {
     // variable for query -> takes score ref and order BY point value
-
 
 
     get(scoreRef).then(function (data) {
@@ -153,8 +139,10 @@ function appendHighScore() {
             for (let topPlayer = 0; topPlayer < 3; topPlayer++) {
                 const playerStats = sortedHighScore[topPlayer]
                 const newLi = document.createElement('li')
+                newLi.classList.add('scoreItem')
                 newLi.innerHTML = `
                 <span class="userStat">${playerStats.user}</span>
+                <span class="line"></span>
                 <span class="scoreStat">${playerStats.score} pnts</span>
                 `
                 topFiveHighScore.appendChild(newLi)
@@ -209,7 +197,10 @@ function playTimer() {
             topFiveHighScore.innerHTML = '';
             appendHighScore();
 
-            yourLocalScore.textContent = `${userName}: ${localScore} points`
+            localUserElement.textContent = `${userName}`
+
+            localScoreElement.textContent = `${localScore}`
+
 
             changeState(playState, resetState);
         }
@@ -308,7 +299,7 @@ resetBtn.addEventListener('click', function () {
     // localScore is reset to 0 
     localScore = 0;
     // time limit reset
-    timeLeft = 40;
+    timeLeft = 5;
     userName = '';
 })
 

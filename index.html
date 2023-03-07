@@ -67,7 +67,6 @@
 
                 <!-- ANSWERS CONTAINER -->
                 <ul class="answersContainer" id="answersContainer">
-                    <button id="playBtn">Submit</button>
                 </ul>
             </div>
         </section>
@@ -80,12 +79,18 @@
                     <h2>Thank you for playing!</h2>
                 </div>
                 <div class="scoreStats">
-                    <h3>High Score</h3>
+                    <h3>Top 3 Players!</h3>
                     <!-- Display firebase highscore -->
-                    <ul id="yourHighScore"></ul>
-                    <h3>Your Score </h3>
+                    <ul id="highScore" class="highScoreBoard">
+                    </ul>
+                    <h3>Your Score</h3>
                     <!-- Display local your score -->
-                    <p id="yourLocalScore"></p>
+                    <div class="localScoreContainer">
+                        <p id="localUser"></p>
+                        <span class="line"></span>
+                        <p id="localScore"></p>
+
+                    </div>
                 </div>
                 <div class="btnContainer">
                     <button id="resetBtn" class="resetBtn">Play Again</button>

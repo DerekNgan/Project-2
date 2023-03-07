@@ -5,6 +5,7 @@
 //state partials
 @use "./partials/startState";
 @use "./partials/playState";
+@use "./partials/resetState";
 //animation partials
 @use "./partials/animation" as *;
 @use "./partials/mediaqueries";

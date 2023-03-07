@@ -232,6 +232,7 @@ html {
 
 ul {
   padding-left: 0px;
+  list-style-type: none;
 }
 
 h1,
@@ -246,6 +247,12 @@ h6 {
 
 html {
   font-family: "PT Sans", sans-serif;
+}
+
+h1,
+h2,
+h3 {
+  text-align: center;
 }
 
 h1 {
@@ -527,8 +534,72 @@ h1 {
   border-radius: 50%;
 }
 
+.scoreStats {
+  width: 100%;
+  margin: 40px 0;
+  background-color: rgb(213, 213, 235);
+  border-radius: 25px;
+  padding: 20px;
+  -webkit-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
+}
+
+.highScoreBoard,
+.localScoreContainer {
+  width: 100%;
+  padding: 0 20px;
+}
+
+.scoreItem {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 7px 0;
+  width: 100%;
+  gap: 20px;
+  color: rgb(145, 113, 192);
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+.scoreItem:hover, .scoreItem:focus {
+  -webkit-transform: scale(1.02);
+          transform: scale(1.02);
+  color: rgb(243, 108, 108);
+}
+.scoreItem:hover .line, .scoreItem:focus .line {
+  border-color: rgb(243, 108, 108);
+}
+
+.line {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  border-bottom: 7px dotted rgb(145, 113, 192);
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+  position: relative;
+  bottom: 15px;
+}
+
+.userStat,
+.userScore {
+  min-width: 60px;
+}
+
+.localScoreContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.localScoreContainer p {
+  margin: 0;
+}
+
 .correct {
-  background-color: rgb(144, 252, 123);
+  background-color: rgb(174, 244, 160);
 }
 
 .incorrect {

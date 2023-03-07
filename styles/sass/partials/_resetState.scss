@@ -1,0 +1,63 @@
+@use "./variables" as *;
+
+// SCORE CONTAINER
+.scoreStats {
+    width: 100%;
+    margin: 40px 0;
+    background-color: $buttonFontColor;
+    border-radius: 25px;
+    padding: 20px;
+    transition: 0.2s ease-in-out;
+
+
+}
+
+// HIGH SCORE BOARD
+.highScoreBoard,
+.localScoreContainer {
+    width: 100%;
+    padding: 0 20px;
+}
+
+
+.scoreItem {
+    display: flex;
+    justify-content: space-between;
+    margin: 7px 0;
+    width: 100%;
+    gap: 20px;
+    color: $buttonColor;
+
+    transition: 0.3s ease-in-out;
+
+    &:hover,
+    &:focus {
+        transform: scale(1.02);
+        color: $incorrectColor;
+
+        .line {
+            border-color: $incorrectColor;
+        }
+    }
+}
+
+.line {
+    flex-grow: 1;
+    border-bottom: 7px dotted $buttonColor;
+    transition: 0.3s ease-in-out;
+    position: relative;
+    bottom: 15px;
+}
+
+.userStat,
+.userScore {
+    min-width: 60px;
+}
+
+.localScoreContainer {
+    display: flex;
+
+    p {
+        margin: 0;
+    }
+}
