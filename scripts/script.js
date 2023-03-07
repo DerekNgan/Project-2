@@ -134,7 +134,7 @@ function appendHighScore() {
 
             const sortedHighScore = highscoreArr.sort(function (a, b) { return b.score - a.score })
 
-            console.log(sortedHighScore)
+            // console.log(sortedHighScore)
 
             for (let topPlayer = 0; topPlayer < 3; topPlayer++) {
                 const playerStats = sortedHighScore[topPlayer]
