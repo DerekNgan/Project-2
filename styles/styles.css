@@ -270,6 +270,8 @@ h2 {
 body {
   height: 100vh;
   background-color: rgb(51, 51, 80);
+  background-image: url(/assets/3188416.jpg);
+  background-size: cover;
 }
 
 .main {
@@ -284,7 +286,6 @@ body {
           align-items: center;
   font-size: 1rem;
   height: 100%;
-  background-color: rgb(51, 51, 80);
 }
 
 .state {
@@ -335,6 +336,13 @@ body {
           flex-direction: column;
 }
 
+.mainLogo {
+  width: 100%;
+  height: 100%;
+  fill: rgb(213, 213, 235);
+  opacity: 0.9;
+}
+
 button {
   background: rgb(145, 113, 192);
   -webkit-transition: 0.25;
@@ -375,6 +383,10 @@ button:focus {
   font-weight: 700;
 }
 
+.btnContainer {
+  width: 70%;
+}
+
 form {
   margin-top: 30px;
 }
@@ -385,6 +397,8 @@ form input {
   border-bottom: 2px solid rgb(145, 113, 192);
   color: white;
   padding-bottom: 10px;
+  font-size: 2rem;
+  border-radius: 25px;
 }
 
 .formContainer {
@@ -413,6 +427,7 @@ form input {
 
 .scoreStats {
   font-size: 2rem;
+  color: rgb(213, 213, 235);
 }
 
 .start .card {
@@ -466,10 +481,11 @@ h1 {
 }
 
 .timeText {
-  height: 70px;
-  width: 70px;
+  height: 80px;
+  width: 90px;
   border-radius: 50%;
-  background-color: rgb(213, 213, 235);
+  background-image: url(/assets/noun-stopwatch-2342166.png);
+  background-size: cover;
 }
 
 .timeText,
@@ -485,8 +501,8 @@ h1 {
           align-items: center;
 }
 
-.statDisplay {
-  color: rgb(51, 51, 80);
+.timeText .statDisplay {
+  color: rgb(213, 213, 235);
 }
 
 .timerBar {
@@ -560,8 +576,7 @@ h1 {
   padding: 20px;
   -webkit-transition: 0.2s ease-in-out;
   transition: 0.2s ease-in-out;
-  -webkit-backdrop-filter: blur(6px) opacity(0.5);
-          backdrop-filter: blur(6px) opacity(0.5);
+  color: rgb(51, 51, 80);
 }
 
 .highScoreBoard,
@@ -661,7 +676,7 @@ h1 {
     width: 90%;
   }
   .titleContainer h1 {
-    font-size: 2.5rem;
+    font-size: 3rem;
   }
   .formContainer {
     width: 70%;

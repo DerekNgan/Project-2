@@ -39,7 +39,7 @@ const localUserElement = document.getElementById('localUser')
 const localScoreElement = document.getElementById('localScore');
 
 // MISC VARIABLES
-let timeLeft = 5;
+let timeLeft = 10;
 let localScore = 0;
 let userName = '';
 
@@ -161,7 +161,7 @@ function playTimer() {
         timeDisplay.textContent = timeLeft;
 
         if (timeLeft > 0) {
-            setTimeout(countdown, 40);
+            setTimeout(countdown, 1000);
         }
 
         // STLYING FOR FINAL FIVE SECONDS -> Courtsey of Derek Ngan
@@ -299,7 +299,7 @@ resetBtn.addEventListener('click', function () {
     // localScore is reset to 0 
     localScore = 0;
     // time limit reset
-    timeLeft = 5;
+    timeLeft = 10;
     userName = '';
 })
 

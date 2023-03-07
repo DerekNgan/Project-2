@@ -50,6 +50,9 @@ h2 {
 body {
   height: 100vh;
   background-color: $backgroundColor;
+  background-image: url(/assets/3188416.jpg);
+  background-size: cover;
+
 }
 
 
@@ -60,8 +63,9 @@ body {
   align-items: center;
   font-size: 1rem;
   height: 100%;
-  background-color: $backgroundColor;
+  // background-color: $backgroundColor;
 }
+
 
 // STATE SECTION
 .state {
@@ -103,6 +107,13 @@ body {
   flex-direction: column;
 }
 
+.mainLogo{
+  width: 100%;
+  height: 100%;
+  fill: $buttonFontColor;
+  opacity: 0.9;
+}
+
 // BUTTON STYLES
 button {
   background: $buttonColor;
@@ -141,7 +152,11 @@ button:focus {
   font-weight: 700;
 }
 
-form {
+.btnContainer{
+  width: 70%;
+}
+
+form{
   margin-top: 30px;
 
   input {
@@ -151,6 +166,8 @@ form {
     border-bottom: 2px solid $buttonColor;
     color: white;
     padding-bottom: 10px;
+    font-size: 2rem;
+    border-radius: 25px;
   }
 }
 
@@ -170,6 +187,7 @@ form {
 
 .scoreStats {
   font-size: 2rem;
+  color: $buttonFontColor;
 }
 
 
