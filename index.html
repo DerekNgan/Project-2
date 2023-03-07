@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz App</title>
     <link rel="stylesheet" href="./styles/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@700&display=swap" rel="stylesheet"> 
 </head>
 <body>
     <main class="main wrapper">
@@ -16,6 +19,7 @@
                 <!-- title -->
                 <div class="titleContainer">
                     <h1>Random Quiz Game!</h1>
+                        <img src="./icons/psychology_alt_FILL0_wght400_GRAD0_opsz48.png" alt="">
                 </div>
                 <div class="instructions">
                     <h2>Instructions</h2>
@@ -67,7 +71,6 @@
 
                 <!-- ANSWERS CONTAINER -->
                 <ul class="answersContainer" id="answersContainer">
-                    <button id="playBtn">Submit</button>
                 </ul>
             </div>
         </section>
@@ -77,15 +80,20 @@
             <!-- STATE WRAPPER -->
             <div class="wrapper card">
                 <div class=reset>
-                    <h2>Thank you for playing!</h2>
+                    <h2>Thanks For Playing!</h2>
                 </div>
                 <div class="scoreStats">
-                    <h3>High Score</h3>
+                    <h3>Top 3 Players!</h3>
                     <!-- Display firebase highscore -->
-                    <ul id="yourHighScore"></ul>
-                    <h3>Your Score </h3>
+                    <ul id="highScore" class="highScoreBoard">
+                    </ul>
+                    <h3>Your Score</h3>
                     <!-- Display local your score -->
-                    <p id="yourLocalScore"></p>
+                    <div class="localScoreContainer">
+                        <p id="localUser" class="localUser"></p>
+                        <span class="line"></span>
+                        <p id="localScore" class="localUser"></p>
+                    </div>
                 </div>
                 <div class="btnContainer">
                     <button id="resetBtn" class="resetBtn">Play Again</button>

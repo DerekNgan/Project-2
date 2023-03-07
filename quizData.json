@@ -11,13 +11,12 @@
             "correctAnswer": 1
         },
         {
-            "questions": "Tyreek Hill is nicknamed",
+            "question": "Tyreek Hill is nicknamed",
             "answers": [
                 "The bolt",
                 "Cheetah",
                 "The Blur",
                 "Zoom"
-
             ],
             "correctAnswer": 2
         },
@@ -52,7 +51,7 @@
             "correctAnswer": 4
         },
         {
-            "question": "In Sam Rami's Spiderman. The public identity of Spiderman is",
+            "question": "In Sam Rami's Spiderman. The public identity of Spiderman is...",
             "answers": [
                 "Norman Osborn",
                 "Gwen Stacy",
@@ -62,7 +61,7 @@
             "correctAnswer": 3
         },
         {
-            "questions": "Steve Irwin is famously known as",
+            "questions": "Steve Irwin is famously known as:",
             "answers": [
                 "The Alligator Hunter",
                 "Gator's Gat",
@@ -81,7 +80,6 @@
             ],
             "correctAnswer": 4
         }
-
     ],
     "trueFalseQuestions": [
         {
@@ -124,7 +122,7 @@
             ],
             "correctAnswer": 1
         },
-        { 
+        {
             "question": "Johnny Depp portrays Grindewald in Fantastic Beasts 3",
             "answers": [
                 "True",
@@ -137,7 +135,14 @@
             "answers": [
                 "True",
                 "False"
-
+            ],
+            "correctAnswer": 1
+        },
+        {
+            "question": "Toronto has a WNBA team",
+            "answers": [
+                "True",
+                "False"
             ],
             "correctAnswer": 1
         },
@@ -157,11 +162,5 @@
     "questionType": [
         "fourAnswerQuestions",
         "trueFalseQuestions"
-    ],
-    "score": [
-        {
-            "name": "test",
-            "score": 1
-        }
     ]
 }
